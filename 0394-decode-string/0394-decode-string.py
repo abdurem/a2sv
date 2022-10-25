@@ -13,8 +13,7 @@ class Solution:
                 num=''
                 while stk and stk[-1].isdigit():
                     num=stk.pop()+num
-                for k in range(int(num)):
-                    stk.append(tmp)
+                stk.append(int(num)*tmp)
         return ''.join(stk)
                 
         
