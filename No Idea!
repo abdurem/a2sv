@@ -1,0 +1,12 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+elmts=input().split(' ')
+full= input().split(' ')
+A= set(input().split(' '))
+B= set(input().split(' '))
+ans=0
+for i in full:
+    if i in A:
+        ans+=1
+    if i in B:
+        ans-=1
+print(ans)
