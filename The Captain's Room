@@ -1,14 +1,15 @@
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 
-from con
+from collections import defaultdict
 
 groupSize=int(input())
 roomList=input().split(' ')
 
-occRooms={}
+occRooms=defaultdict(int)
 for i in roomList:
-    if i not in occRooms:
-        occRooms[i] = 1
-    else
+    occRooms[i]+=1
 
-print(len(occRooms))
+for i in occRooms:
+    if occRooms[i] == 1:
+        print(i)
+        break
