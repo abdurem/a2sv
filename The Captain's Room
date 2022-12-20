@@ -1,0 +1,14 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from con
+
+groupSize=int(input())
+roomList=input().split(' ')
+
+occRooms={}
+for i in roomList:
+    if i not in occRooms:
+        occRooms[i] = 1
+    else
+
+print(len(occRooms))
