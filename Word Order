@@ -1,0 +1,15 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n=input()
+strs=[]
+for i in range(int(n)):
+    strs.append(input())
+
+dic={}
+for i in strs:
+    if i in dic:
+        dic[i]+=1
+    else:
+        dic[i]=1
+print(len(dic))
+ans=[str(dic[i]) for i in dic]
+print(' '.join(ans))
