@@ -1,0 +1,11 @@
+class Solution:
+    def checkIfExist(self, arr: List[int]) -> bool:
+        hashs=Counter(arr)
+        
+        for i in arr:
+            if i == 0 and hashs[i] > 1:
+                return True
+            elif i != 0 and hashs[i*2]:
+                return True
+        
+        return False
