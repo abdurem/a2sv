@@ -1,0 +1,14 @@
+class Solution:
+    def largestLocal(self, grid: List[List[int]]) -> List[List[int]]:
+        ans= [[j for i in range(len(grid)-2)] for j in range(len(grid)-2)]
+
+        for i in range(len(ans)):
+            for j in range(len(ans[0])):
+                mx1=max(grid[i][j:j+3])
+                mx2=max(grid[i+1][j:j+3])
+                mx3=max(grid[i+2][j:j+3])
+                ans[i][j] = max(mx1,mx2,mx3)
+        return ans
+                
+                        
+                    
