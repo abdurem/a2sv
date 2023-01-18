@@ -1,17 +1,25 @@
 class Solution:
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
-        result = 0
-        for i in range(len(grid)-2):
-            for j in range(len(grid)-2):
-                temp = [grid[i+k][j:j+3] for k in range(3)]
-                check_nums = [num for row in temp for num in row]
-                if sorted(check_nums) == [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-                    row_sums = [sum(row) for row in temp]
-                    col_sums = [sum([row[i] for row in temp]) for i in range(3)]
-                    diag_sums = [sum([temp[i][i] for i in range(3)]), (temp[0][2] + temp[1][1] + temp[2][0])]
-                    row_sums.extend(col_sums)
-                    row_sums.extend(diag_sums)
-                    if len(set(row_sums)) == 1:
-                        result += 1
         
-        return result
+        ans=0
+        for bottom in range(2,len(grid)):
+            top = bottom-2
+            for right in range(2,len(grid[0])):
+                left = right-2
+                
+                elements=[grid[i][j] for i in range(top,bottom+1) for j in range(left,right+1)]
+                magic = [[grid[i][j] for j in range(left,right+1)] for i in range(top,bottom+1)]
+                template=[i for i in range(1,10)]
+                if sorted(elements) == template:
+                    sumH = set(sum(row) for row in magic)
+                    sumV = set([sum(row[i] for row in magic)for i in range(len(magic))])
+                    dig1 = magic[0][0]+magic[1][1]+magic[2][2]
+                    dig2 = magic[0][2]+magic[1][1]+magic[2][0]
+                    
+                    tmp = sumH.union(sumV)
+                    tmp.add(dig1)
+                    tmp.add(dig2)
+                    if len(tmp) == 1:
+                        ans+=1
+                        
+        return ans
