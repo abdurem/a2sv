@@ -7,9 +7,13 @@ class MyStack:
         self.list.append(x)
 
     def pop(self) -> int:
+        if self.empty():
+            return None
         return self.list.pop()
 
     def top(self) -> int:
+        if self.empty():
+            return None
         return self.list[-1]
 
     def empty(self) -> bool:
