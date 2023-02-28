@@ -4,21 +4,19 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def __init__(self):
+        self.node=ListNode()
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if list1 == None:
+            return list2
+        elif list2 == None:
+            return list1
+        head=None
+        if list1.val < list2.val:
+            list1.next=self.mergeTwoLists(list1.next,list2)
+            head=list1
+        else:
+            list2.next=self.mergeTwoLists(list1,list2.next)
+            head=list2
         
-        cur1,cur2=list1,list2
-        ans=ListNode()
-        tmp=ans
-        while cur1 and cur2:
-            if cur1.val < cur2.val:
-                tmp.next=ListNode(cur1.val)
-                cur1=cur1.next
-            else:
-                tmp.next=ListNode(cur2.val)
-                cur2=cur2.next
-            tmp=tmp.next
-        if cur1:
-            tmp.next=cur1
-        elif cur2:
-            tmp.next=cur2
-        return ans.next
+        return head
