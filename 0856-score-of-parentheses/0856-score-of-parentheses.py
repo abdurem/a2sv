@@ -11,6 +11,5 @@ class Solution:
                 else:
                     score *= 2
                 stack[-1] += score
-            else:
-                return 0
+                
         return stack.pop()
