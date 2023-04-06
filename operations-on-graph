@@ -1,0 +1,15 @@
+from collections import defaultdict
+
+n = int(input())
+ops = int(input())
+d = defaultdict(list)
+
+for _ in range(ops):
+    arr = list(map(int,input().split()))
+    if arr[0] == 1:
+        d[arr[1]].append(arr[2])
+        d[arr[2]].append(arr[1])
+
+    elif arr[0] == 2 and len(d[arr[1]]):
+        print(*d[arr[1]])
+
